@@ -7,7 +7,6 @@ const bot = new TelegramBot(token, {polling: true});
 // Matches "/echo [whatever]"
 bot.onText(/\/echo (.+)/, (msg, match) => {
   const chatId = msg.chat.id;
-  console.log(chatId); // DEBUGGING
   const resp = match[1]; // the captured "whatever"
 
   // send back the matched "whatever" to the chat
@@ -24,10 +23,9 @@ bot.on('photo', (msg) => {
 });
 
 // Listen for 'videos'. WORK IN PROGRESS
-bot.on('photo', (msg) => {
+bot.on('video', (msg) => {
   const chatId = process.env.CHATID; // Group ID;
   if (msg.chat.id === msg.from.id) { // Only forward messages from real people
-      console.log(msg);
-      //bot.sendPhoto(chatId, msg.video[msg.photo.length-1].file_id);
+      bot.sendPhoto(chatId, msg.video[msg.photo.length-1].file_id);
   }
 });
