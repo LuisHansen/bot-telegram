@@ -22,11 +22,10 @@ bot.on('photo', (msg) => {
   }
 });
 
-// Listen for 'videos'. WORK IN PROGRESS
+// Listen for 'videos'.
 bot.on('video', (msg) => {
   const chatId = process.env.CHATID; // Group ID;
   if (msg.chat.id === msg.from.id) { // Only forward messages from real people
-    console.log(msg);  
-    //bot.sendPhoto(chatId, msg.video[msg.photo.length-1].file_id);
+    bot.sendVideo(chatId, msg.video.file_id);
   }
 });
