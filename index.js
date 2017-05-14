@@ -26,6 +26,7 @@ bot.on('photo', (msg) => {
 bot.on('video', (msg) => {
   const chatId = process.env.CHATID; // Group ID;
   if (msg.chat.id === msg.from.id) { // Only forward messages from real people
-      bot.sendPhoto(chatId, msg.video[msg.photo.length-1].file_id);
+    console.log(msg);  
+    //bot.sendPhoto(chatId, msg.video[msg.photo.length-1].file_id);
   }
 });
