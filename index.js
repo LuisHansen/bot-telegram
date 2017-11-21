@@ -1,7 +1,9 @@
 const TelegramBot = require('node-telegram-bot-api');
 
 const token = process.env.TOKEN;
-const bot = new TelegramBot(token, {polling: true});
+var port = process.env.PORT || 8443;
+var host = process.env.HOST;
+const bot = new TelegramBot(token, {polling: true, webHook: {port: port, host: host}});
 
 
 // Matches "/echo [whatever]"
