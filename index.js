@@ -1,11 +1,13 @@
 const TelegramBot = require('node-telegram-bot-api');
-var app = require('express')();
 
 const token = process.env.TOKEN;
-var port = process.env.PORT || 8443;
-const bot = new TelegramBot(token, {polling: true});
 var port = process.env.PORT || 8080;
-var io = require('socket.io').listen(app.listen(port));
+
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+var port = process.env.PORT || 3000;
+const bot = new TelegramBot(token, {polling: true});
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
