@@ -24,6 +24,8 @@
   },
   "homepage": "https://github.com/LuisHansen/bot-telegram#readme",
   "dependencies": {
-    "node-telegram-bot-api": "^0.27.1"
+    "node-telegram-bot-api": "^0.27.1",
+    "express": "^4.16.2",
+    "socket.io": "^2.0.4"
   }
 }
