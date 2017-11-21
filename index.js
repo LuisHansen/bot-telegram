@@ -7,6 +7,15 @@ const bot = new TelegramBot(token, {polling: true});
 var port = process.env.PORT || 8080;
 var io = require('socket.io').listen(app.listen(port));
 
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html');
+});
+
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg);
+  });
+});
 
 // Matches "/echo [whatever]"
 bot.onText(/\/echo (.+)/, (msg, match) => {
